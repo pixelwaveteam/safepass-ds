@@ -1,6 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import path, { dirname, join } from 'path';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { dirname, join } from 'path';
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -27,12 +26,6 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
   viteFinal: async (config, { configType }) => {
-    config.plugins?.push(
-      tsconfigPaths({
-        projects: [path.resolve(path.dirname(__dirname), 'tsconfig.json')],
-      }),
-    );
-
     if (configType === 'PRODUCTION') {
       config.base = '/safepass-ds';
     }
