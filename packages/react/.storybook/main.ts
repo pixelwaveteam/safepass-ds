@@ -26,12 +26,16 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  viteFinal: async (config) => {
+  viteFinal: async (config, { configType }) => {
     config.plugins?.push(
       tsconfigPaths({
         projects: [path.resolve(path.dirname(__dirname), 'tsconfig.json')],
       }),
     );
+
+    if (configType === 'PRODUCTION') {
+      config.base = '/safepass-ds';
+    }
 
     return config;
   },
