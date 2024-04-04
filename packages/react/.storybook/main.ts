@@ -31,9 +31,7 @@ const config: StorybookConfig = {
   async viteFinal(config, { configType }) {
     const { mergeConfig } = await import('vite');
 
-    console.log('configType', configType);
-
-    if (configType !== 'PRODUCTION') {
+    if (process.env.NODE_ENV === 'production') {
       config.base = '/safepass-ds';
     }
 
