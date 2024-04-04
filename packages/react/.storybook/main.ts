@@ -25,11 +25,23 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  // viteFinal: async (config) => {
-  // if (configType === 'PRODUCTION') {
-  //   config.base = '/safepass-ds';
-  // }
-  // return config;
-  // },
+  core: {
+    builder: '@storybook/builder-vite',
+  },
+  async viteFinal(config, { configType }) {
+    const { mergeConfig } = await import('vite');
+
+    console.log('configType', configType);
+
+    if (configType !== 'PRODUCTION') {
+      config.base = '/safepass-ds';
+    }
+
+    return mergeConfig(config, {
+      optimizeDeps: {
+        include: ['storybook-dark-mode'],
+      },
+    });
+  },
 };
 export default config;
