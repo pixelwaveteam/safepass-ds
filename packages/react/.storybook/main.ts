@@ -19,18 +19,17 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-a11y'),
   ],
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {},
   },
   docs: {
-    autodocs: "tag",
+    autodocs: 'tag',
   },
-  viteFinal: async (config, { configType }) => {
-    if (configType === 'PRODUCTION') {
-      config.base = '/safepass-ds';
-    }
-
-    return config;
-  },
+  // viteFinal: async (config) => {
+  // if (configType === 'PRODUCTION') {
+  //   config.base = '/safepass-ds';
+  // }
+  // return config;
+  // },
 };
 export default config;
