@@ -1,30 +1,33 @@
-import type { StorybookConfig } from '@storybook/react-vite';
-import { dirname, join } from 'path';
-
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
+import type { StorybookConfig } from "@storybook/react-vite";
+import path from "path";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 const config: StorybookConfig = {
-  stories: ['../src/pages/**/*.stories.mdx', '../src/stories/**/*.stories.tsx'],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    getAbsolutePath('@storybook/addon-onboarding'),
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-interactions'),
-    getAbsolutePath('@storybook/addon-a11y')
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-onboarding",
+    "@storybook/addon-interactions",
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: "@storybook/react-vite",
     options: {},
   },
   docs: {
-    autodocs: 'tag',
+    autodocs: "tag",
   },
-  viteFinal: (config, { configType }) => {
-    if (configType === 'PRODUCTION') {
-      config.base = '/safepass-ds';
-    }
+  viteFinal: async (config) => {
+    config.plugins?.push(
+      /** @see https://github.com/aleclarson/vite-tsconfig-paths */
+      tsconfigPaths({
+        projects: [path.resolve(path.dirname(__dirname), "tsconfig.json")],
+      })
+    );
+
+    // if (configType === 'PRODUCTION') {
+    //   config.base = '/safepass-ds';
+    // }
 
     return config;
   },
