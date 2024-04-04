@@ -5,10 +5,10 @@
   ],
   "scripts": {
     "dev": "turbo run dev --parallel",
-    "build": "turbo run build",
+    "build": "turbo run build --filter=!react",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build-vite --filter=react && changeset publish"
+    "release": "turbo run build --filter=react && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
