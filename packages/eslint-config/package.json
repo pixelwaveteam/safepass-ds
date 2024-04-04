@@ -1,6 +1,6 @@
 {
   "name": "@safepass-ds/eslint-config",
-  "private": false,
+  "private": true,
   "license": "ISC",
   "peerDependencies": {
     "eslint": "^8.0.0",

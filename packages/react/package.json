@@ -1,27 +1,24 @@
 {
   "name": "@safepass-ds/react",
   "version": "1.0.0",
+  "private": false,
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.umd.cjs",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index-umd.cjs",
+  "module": "dist/index.js",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "module": "./dist/index.umd.cjs",
-      "import": "./dist/index.umd.cjs",
-      "require": "./dist/index.js",
-      "default": "./dist/index.umd.cjs"
-    },
-    "./package.json": "./package.json"
+      "import": "./dist/index.js",
+      "require": "./dist/index-umd.js"
+    }
   },
   "scripts": {
+    "build-vite": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "dev": "storybook dev -p 6006",
-    "build": "storybook build",
+    "build": "storybook build --loglevel error --disable-telemetry",
     "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {

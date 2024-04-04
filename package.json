@@ -16,5 +16,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.0.2"
-  }
+  },
+  "name": "",
+  "version": ""
 }
