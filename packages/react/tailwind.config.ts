@@ -1,4 +1,5 @@
 import { Config } from 'tailwindcss';
+
 import { shadcnPreset } from './src/lib/shadcn-preset';
 
 const config = {
