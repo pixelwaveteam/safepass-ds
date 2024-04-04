@@ -19,7 +19,9 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "dev": "storybook dev -p 6006",
     "build": "storybook build --loglevel error --disable-telemetry",
-    "deploy-storybook": "storybook-to-ghpages"
+    "build-storybook": "storybook build",
+    "deploy-storybook": "storybook-to-ghpages",
+    "chromatic": "npx chromatic --project-token=chpt_8e9e0773e861f24"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
@@ -48,6 +50,7 @@
     "@typescript-eslint/parser": "^6.10.0",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
+    "chromatic": "^11.3.0",
     "eslint": "^8.53.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
