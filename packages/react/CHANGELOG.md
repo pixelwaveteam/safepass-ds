@@ -1,5 +1,11 @@
 # @safepass-ds/react
 
+## 1.1.2
+
+### Patch Changes
+
+- fix entry file
+
 ## 1.1.1
 
 ### Patch Changes
