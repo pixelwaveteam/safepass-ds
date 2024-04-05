@@ -1,5 +1,11 @@
 # @safepass-ds/react
 
+## 1.1.3
+
+### Patch Changes
+
+- fix import
+
 ## 1.1.2
 
 ### Patch Changes
