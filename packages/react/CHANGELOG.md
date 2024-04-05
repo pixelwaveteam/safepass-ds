@@ -1,5 +1,11 @@
 # @safepass-ds/react
 
+## 1.1.1
+
+### Patch Changes
+
+- Export shacn present and utils
+
 ## 1.1.0
 
 ### Minor Changes
