@@ -3,7 +3,7 @@ import { fn } from '@storybook/test';
 
 import { DialogCloseButton, DialogContent, DialogOverlay, DialogRoot, DialogTitle } from '../components/dialog';
 
-type Dialog = React.ComponentProps<typeof DialogRoot> & React.ComponentProps<typeof DialogContent> & {
+type Dialog = React.ComponentProps<typeof DialogRoot> & {
   title?: string;
   body?: string;
 };
@@ -63,11 +63,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: ({ title, size, body, ...args }) => (
+  render: ({ title, body, ...args }) => (
     <div className='min-h-[20rem]'>
       <DialogRoot {...args}>
         <DialogOverlay />
-        <DialogContent size={size}>
+        <DialogContent>
           <DialogCloseButton />
           <DialogTitle>
             {title}
@@ -80,9 +80,9 @@ export const Default: Story = {
 };
 
 export const WithoutOverlay: Story = {
-  render: ({ title, size, body, ...args }) => (
+  render: ({ title, body, ...args }) => (
     <DialogRoot {...args}>
-      <DialogContent size={size}>
+      <DialogContent>
         <DialogCloseButton />
         <DialogTitle>
           {title}
