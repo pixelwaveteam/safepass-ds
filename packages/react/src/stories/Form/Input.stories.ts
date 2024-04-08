@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import { Input } from '../components/ui/input';
+import { Input } from '../../components/ui/form/input';
 
 const meta: Meta<typeof Input> = {
-  title: 'Components/Input',
+  title: 'Components/Form/Input',
   component: Input,
   tags: ['autodocs'],
   args: {
