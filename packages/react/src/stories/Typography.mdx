@@ -1,0 +1,55 @@
+import { Meta, Typeset } from '@storybook/blocks';
+
+<Meta title="Typography" />
+
+export const typography = {
+  weight: {
+    regular: '400',
+    bold: '700',
+  },
+  size: {
+    text: {
+      xs: 12,
+      sm: 14,
+      md: 16,
+      lg: 18,
+      xl: 20,
+    },
+    heading: {
+      sm: 14,
+      md: 16,
+      lg: 18,
+      xl: 20,
+      '2xl': 24,
+      '4xl': 36,
+    }
+  },
+};
+
+export const textSizes = Object.values(typography.size.text).map(val => Number(val))
+
+export const headingSizes = Object.values(typography.size.heading).map(val => Number(val))
+
+export const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
+# Typography
+
+## Text
+
+**Weights:** 400(regular)
+
+<Typeset
+  fontSizes={textSizes}
+  fontWeight={typography.weight.regular}
+  sampleText={SampleText}
+/>
+
+## Heading
+
+**Weights:** 400(regular), 700(bold)
+
+<Typeset
+  fontSizes={headingSizes}
+  fontWeight={typography.weight.bold}
+  sampleText={SampleText}
+/>
