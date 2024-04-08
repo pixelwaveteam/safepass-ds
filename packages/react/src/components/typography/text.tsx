@@ -10,9 +10,6 @@ const textVariants = cva('', {
       md: 'text-md',
       lg: 'text-lg',
       xl: 'text-xl',
-      '4xl': 'text-4xl',
-      '5xl': 'text-5xl',
-      '8xl': 'text-8xl',
      },
   },
   defaultVariants: {
