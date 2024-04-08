@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 
 export const Labeled: Story = {
-  decorators: (Story) => {
+  render: (props) => {
     const componentId = useId();
 
     return (
@@ -31,7 +31,7 @@ export const Labeled: Story = {
           <Label htmlFor={componentId}>
             Textarea's label
           </Label>
-          <Story args={{ id: componentId }} />
+          <Textarea id={componentId} {...props} />
         </div>
       </form>
     )
