@@ -64,16 +64,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: ({ title, size, body, ...args }) => (
-    <DialogRoot {...args}>
-      <DialogOverlay />
-      <DialogContent size={size}>
-        <DialogCloseButton />
-        <DialogTitle>
-          {title}
-        </DialogTitle>
-        {body}
-      </DialogContent>
-    </DialogRoot>
+    <div className='min-h-[20rem]'>
+      <DialogRoot {...args}>
+        <DialogOverlay />
+        <DialogContent size={size}>
+          <DialogCloseButton />
+          <DialogTitle>
+            {title}
+          </DialogTitle>
+          {body}
+        </DialogContent>
+      </DialogRoot>
+    </div>
   )
 };
 
