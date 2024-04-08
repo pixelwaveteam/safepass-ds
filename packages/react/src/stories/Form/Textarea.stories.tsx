@@ -8,10 +8,14 @@ const meta: Meta<typeof Textarea> = {
   component: Textarea,
   tags: ['autodocs'],
   args: {
-    placeholder: "Textarea's placeholder"
+    placeholder: "Textarea's placeholder",
+    disabled: false,
   },
   argTypes: {
     placeholder: { control: 'text' },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   }
 } satisfies Meta<typeof Textarea>;
 

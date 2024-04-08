@@ -7,6 +7,9 @@ const meta: Meta<typeof Checkbox> = {
   title: 'Components/Form/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
+  args: {
+    disabled: false,
+  },
   argTypes: {
     checked: {
       type: 'boolean',
@@ -16,6 +19,9 @@ const meta: Meta<typeof Checkbox> = {
       type: 'function',
       description: 'Event triggered when the checkbox state should toggle.',
     },
+    disabled: {
+      control: { type: 'boolean' },
+    },
   },
 } satisfies Meta<typeof Checkbox>;
 
@@ -24,7 +30,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => { 
+  render: (props) => { 
     const [checked, setChecked] = useState(false)
 
     function toggle() {
@@ -32,13 +38,13 @@ export const Default: Story = {
     }
 
     return (
-      <Checkbox checked={checked} onToggle={toggle} />
+      <Checkbox {...props} checked={checked} onToggle={toggle} />
     )
   }
 };
 
 export const Labeled: Story = {
-  render: () => {
+  render: (props) => {
     const checkboxId = useId();
 
     const [checked, setChecked] = useState(false)
@@ -50,7 +56,7 @@ export const Labeled: Story = {
     return (
       <form>
         <div className='flex gap-2 items-center'>
-          <Checkbox id={checkboxId} checked={checked} onToggle={toggle} />
+          <Checkbox {...props} id={checkboxId} checked={checked} onToggle={toggle} />
           <Label htmlFor={checkboxId}>
             Checkbox brief description.
           </Label>
