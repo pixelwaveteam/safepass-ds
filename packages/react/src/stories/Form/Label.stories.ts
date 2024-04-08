@@ -10,6 +10,10 @@ const meta: Meta<typeof Label> = {
   },
   argTypes: {
     children: { control: 'text' },
+    htmlFor: {
+      description: 'The id of a HTML element to be linked to the label itself.',
+      type: 'string',
+    }
   }
 } satisfies Meta<typeof Label>;
 
