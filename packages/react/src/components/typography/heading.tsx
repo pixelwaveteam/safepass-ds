@@ -4,8 +4,8 @@ import { ElementType, HTMLAttributes, forwardRef } from 'react';
 const headingVariants = cva('font-bold', {
   variants: {
      size: {
-      default: 'text-sm uppercase',
-      sm: 'text-sm',
+      default: 'text-xl',
+      sm: 'text-sm uppercase',
       md: 'text-md',
       lg: 'text-lg',
       xl: 'text-xl',
