@@ -23,7 +23,6 @@ const DialogRoot = forwardRef<HTMLDivElement, DialogRootProps>(
       <div
         className={cn(
           'absolute inset-0',
-
           className
         )}
         {...props}
@@ -53,7 +52,7 @@ const DialogOverlay = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>
 DialogOverlay.displayName = 'DialogOverlay';
 
 const dialogContentVariants = cva(
-  'flex flex-col bg-white w-full absolutely-centered rounded h-[15rem] shadow-xl px-8 py-4',
+  'relative mx-auto flex flex-col bg-white w-full rounded shadow-xl px-8 py-4',
   {
     variants: {
       size: {
@@ -77,12 +76,14 @@ interface DialogContentProps
 const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
   ({ className, children, size, ...props }, ref) => {
     return (
-      <div
-        className={cn(dialogContentVariants({ size, className }))}
-        ref={ref}
-        {...props}
-      >
-        {children}
+      <div className="px-10 absolutely-centered w-full">
+        <div
+          className={cn(dialogContentVariants({ size, className }))}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </div>
       </div>
     );
   },
@@ -132,3 +133,4 @@ const DialogCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTM
 DialogCloseButton.displayName = 'DialogCloseButton';
 
 export { DialogCloseButton, DialogContent, DialogOverlay, DialogRoot, DialogTitle };
+
