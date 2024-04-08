@@ -1,6 +1,7 @@
 'use client'
 
 import { VariantProps, cva } from "class-variance-authority";
+import { X } from "lucide-react";
 import { ButtonHTMLAttributes, HTMLAttributes, createContext, forwardRef, useContext } from "react";
 import { cn } from "../utils";
 
@@ -117,14 +118,14 @@ const DialogCloseButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTM
     return (
       <button
         className={cn(
-          'w-5 h-auto aspect-square p-4 transition-colors cursor-pointer absolute right-8 top-4 leading-[0px] flex justify-center content-center rounded-sm hover:bg-black/10',
+          'p-2 transition-colors cursor-pointer absolute right-8 top-4 leading-[0px] flex justify-center content-center rounded-sm hover:bg-black/10',
           className
         )}
         ref={ref}
         onClick={onClose}
         {...props}
-      >
-        X
+        >
+        <X className="w-4 h-4" strokeWidth={3} />
       </button>
     );
   },
