@@ -39,6 +39,11 @@ const meta: Meta<typeof DialogRoot> = {
       description: 'Function called when the dialog should close.',
     },
   },
+  decorators: (Story) => (
+    <div className='min-h-[20rem]'>
+      <Story />
+    </div>
+  )
 } satisfies Meta<typeof DialogRoot>;
 
 export default meta;
@@ -47,19 +52,17 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: args => (
-    <div className='min-h-[20rem]'>
-      <DialogRoot {...args}>
-        <DialogOverlay />
-        <DialogContent>
-          <DialogCloseButton />
-          <DialogTitle>
-            Dialog's Title
-          </DialogTitle>
+    <DialogRoot {...args}>
+      <DialogOverlay />
+      <DialogContent>
+        <DialogCloseButton />
+        <DialogTitle>
+          Dialog's Title
+        </DialogTitle>
 
-          Dialog's body content.
-        </DialogContent>
-      </DialogRoot>
-    </div>
+        Dialog's body content.
+      </DialogContent>
+    </DialogRoot>
   )
 };
 
