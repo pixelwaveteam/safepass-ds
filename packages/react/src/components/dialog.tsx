@@ -5,19 +5,36 @@ import { X } from "lucide-react";
 import { ButtonHTMLAttributes, HTMLAttributes, createContext, forwardRef, useContext } from "react";
 import { cn } from "../utils";
 
-interface DialogContextData {
+const dialogContentVariants = cva(
+  'relative mx-auto flex flex-col bg-white w-full rounded shadow-xl px-8 py-4',
+  {
+    variants: {
+      size: {
+        default: 'max-w-2xl',
+        sm: 'max-w-xl',
+        lg: 'max-w-3xl',
+        xl: 'max-w-4xl',
+      },
+    },
+    defaultVariants: {
+      size: 'default',
+    },
+  },
+);
+
+interface DialogContextData extends VariantProps<typeof dialogContentVariants> {
   onClose: () => void;
 }
 
 const dialogContext = createContext<DialogContextData>({} as DialogContextData)
 
-interface DialogRootProps extends HTMLAttributes<HTMLDivElement> {
+interface DialogRootProps extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof dialogContentVariants> {
   isOpen: boolean;
   onClose: () => void;
 }
 
 const DialogRoot = forwardRef<HTMLDivElement, DialogRootProps>(
-  ({ className, children, isOpen, onClose,...props }) => {
+  ({ className, children, isOpen, onClose, size,...props }) => {
     if(!isOpen) return;
 
     return (
@@ -28,7 +45,7 @@ const DialogRoot = forwardRef<HTMLDivElement, DialogRootProps>(
         )}
         {...props}
       >
-        <dialogContext.Provider value={{ onClose }}>
+        <dialogContext.Provider value={{ onClose, size }}>
           {children}
         </dialogContext.Provider>
       </div>
@@ -52,30 +69,14 @@ const DialogOverlay = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>
 
 DialogOverlay.displayName = 'DialogOverlay';
 
-const dialogContentVariants = cva(
-  'relative mx-auto flex flex-col bg-white w-full rounded shadow-xl px-8 py-4',
-  {
-    variants: {
-      size: {
-        default: 'max-w-2xl',
-        sm: 'max-w-xl',
-        lg: 'max-w-3xl',
-        xl: 'max-w-4xl',
-      },
-    },
-    defaultVariants: {
-      size: 'default',
-    },
-  },
-);
-
 interface DialogContentProps
-  extends HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof dialogContentVariants> {
+  extends HTMLAttributes<HTMLDivElement> {
 }
 
 const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
-  ({ className, children, size, ...props }, ref) => {
+  ({ className, children, ...props }, ref) => {
+    const { size } = useContext(dialogContext)
+
     return (
       <div className="px-10 absolutely-centered w-full">
         <div
