@@ -3,12 +3,7 @@ import { fn } from '@storybook/test';
 
 import { DialogCloseButton, DialogContent, DialogOverlay, DialogRoot, DialogTitle } from '../components/dialog';
 
-type Dialog = React.ComponentProps<typeof DialogRoot> & {
-  title?: string;
-  body?: string;
-};
-
-const meta: Meta<Dialog> = {
+const meta: Meta<typeof DialogRoot> = {
   title: 'Components/Dialog',
   component: DialogRoot,
   subcomponents: {
@@ -19,9 +14,7 @@ const meta: Meta<Dialog> = {
   },
   tags: ['autodocs'],
   args: {
-    isOpen: false,
-    title: 'Title',
-    body: 'The content of the dialog.',
+    isOpen: true,
     size: 'default',
     onClose: fn(),
   },
@@ -30,16 +23,6 @@ const meta: Meta<Dialog> = {
       type: 'boolean',
       control: 'boolean',
       description: 'Controls if the dialog is rather open or close.',
-    },
-    title: {
-      type: 'string',
-      control: 'text',
-      description: "The dialog's title"
-    },
-    body: {
-      type: 'string',
-      control: 'text',
-      description: "The dialog's content"
     },
     size: {
       options: [
@@ -56,23 +39,24 @@ const meta: Meta<Dialog> = {
       description: 'Function called when the dialog should close.',
     },
   },
-} satisfies Meta<Dialog>;
+} satisfies Meta<typeof DialogRoot>;
 
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: ({ title, body, ...args }) => (
+  render: args => (
     <div className='min-h-[20rem]'>
       <DialogRoot {...args}>
         <DialogOverlay />
         <DialogContent>
           <DialogCloseButton />
           <DialogTitle>
-            {title}
+            Dialog's Title
           </DialogTitle>
-          {body}
+
+          Dialog's body content.
         </DialogContent>
       </DialogRoot>
     </div>
@@ -80,14 +64,15 @@ export const Default: Story = {
 };
 
 export const WithoutOverlay: Story = {
-  render: ({ title, body, ...args }) => (
+  render: args => (
     <DialogRoot {...args}>
       <DialogContent>
         <DialogCloseButton />
         <DialogTitle>
-          {title}
+          Dialog's Title
         </DialogTitle>
-        {body}
+        
+        Dialog's body content.
       </DialogContent>
     </DialogRoot>
   )
